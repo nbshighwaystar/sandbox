@@ -1,0 +1,11 @@
+Procedural                  Object_oriented
+
+mysqli_connect              $mysqli = new mysqli
+mysqli_connect_errno        $mysqli->connect_errno
+mysqli_connect_error        $mysqli->connect_error
+mysqli_real_escape_string   $mysqli->real_escape_string
+mysqli_query                $mysqli->query
+mysqli_fetch_assoc          $mysqli->fetch_assoc 
+mysqli_close                $mysqli->close 
+
+http://php.net/manual/en/mysqlinfo.api.choosing.php 
