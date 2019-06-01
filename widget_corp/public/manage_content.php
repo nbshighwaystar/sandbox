@@ -20,17 +20,23 @@
     <div id="main">
         <div id="navigation">
        
-        <?php 
-            $navigation = navigation($selected_subject_id, $selected_page_id); 
-            echo $navigation;
-        ?>
+        <?php echo navigation($selected_subject_id, $selected_page_id); ?>
         
 <a href="admin.php">Admin Page</a>
         </div>
             <div id="page">
                 <h2>Manage Content</h2>
-                <?php echo $selected_subject_id; ?>
-                <?php echo $selected_page_id; ?>
+                <?php 
+                if ($selected_subject_id)
+                { ?>
+                    <?php echo $selected_subject_id; ?>
+                <?php } elseif ($selected_page_id)
+                { ?>
+                    <?php echo $selected_page_id; ?>
+                <?php } else 
+                { ?>
+                    Please select a subject or a page.
+                <?php } ?>
 
             </div>
     </div>
