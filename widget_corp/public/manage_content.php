@@ -19,46 +19,12 @@
 ?>
     <div id="main">
         <div id="navigation">
-        <ul class="subjects">
-
-        <?php $subject_set = find_all_subjects();   ?>
-        <?php
-            while ($subject=mysqli_fetch_assoc($subject_set)) {
-                ?>        
-                
-                <li 
-                <?php
-                if ($subject["id"] == $selected_subject_id)
-                {
-                    echo "class = \"selected\"";
-                } ?>
-                >
-                
-                    <a href="manage_content.php?subject=<?php echo urlencode($subject["id"]); ?>"><?php echo $subject['menu_name']; ?></a>
-                    <?php $page_set = find_pages_for_subject($subject["id"]) ?>
-                        
-                    <ul class=pages>
-                        <?php
-                            while ($page=mysqli_fetch_assoc($page_set)) {
-                        ?>
-                            <li
-                            <?php
-                                if ($page["id"] == $selected_page_id)
-                                {
-                                    echo "class = \"selected\"";
-                                } ?>
-                            >
-                            <a href="manage_content.php?page=<?php echo urlencode($page["id"]); ?>"><?php echo $page['menu_name']; ?></a></li>
-                        <?php } ?>
-                    <?php mysqli_free_result($page_set); ?>
-                    </ul>  
-                </li>
-        <?php }  ?>
-        </ul>
+       
         <?php 
-            //4. Release returned data
-            mysqli_free_result($subject_set);
+            $navigation = navigation($selected_subject_id, $selected_page_id); 
+            echo $navigation;
         ?>
+        
 <a href="admin.php">Admin Page</a>
         </div>
             <div id="page">
