@@ -56,7 +56,7 @@ ul.subjects {
     margin: 1em 0; padding-left: 0; list-style: none;
 }
 
-ul.pages { padding-left: 2em; list-style: square;}
+ul.pages { padding-left: 2em; list-style: square; font-weight: normal}
 .selected { font-weight: bold;}
 
 

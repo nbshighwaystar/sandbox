@@ -48,4 +48,4 @@
             </div>
     </div>
 
-<?php include("../inlcudes/layouts/footer.php"); ?>
+<?php include("../includes/layouts/footer.php"); ?>
