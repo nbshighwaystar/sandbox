@@ -25,7 +25,15 @@
         <?php
             while ($subject=mysqli_fetch_assoc($subject_set)) {
                 ?>        
-                <li>
+                
+                <li 
+                <?php
+                if ($subject["id"] == $selected_subject_id)
+                {
+                    echo "class = \"selected\"";
+                } ?>
+                >
+                
                     <a href="manage_content.php?subject=<?php echo urlencode($subject["id"]); ?>"><?php echo $subject['menu_name']; ?></a>
                     <?php $page_set = find_pages_for_subject($subject["id"]) ?>
                         
@@ -33,7 +41,14 @@
                         <?php
                             while ($page=mysqli_fetch_assoc($page_set)) {
                         ?>
-                            <li><a href="manage_content.php?page=<?php echo urlencode($page["id"]); ?>"><?php echo $page['menu_name']; ?></a></li>
+                            <li
+                            <?php
+                                if ($page["id"] == $selected_page_id)
+                                {
+                                    echo "class = \"selected\"";
+                                } ?>
+                            >
+                            <a href="manage_content.php?page=<?php echo urlencode($page["id"]); ?>"><?php echo $page['menu_name']; ?></a></li>
                         <?php } ?>
                     <?php mysqli_free_result($page_set); ?>
                     </ul>  
@@ -44,7 +59,7 @@
             //4. Release returned data
             mysqli_free_result($subject_set);
         ?>
-
+<a href="admin.php">Admin Page</a>
         </div>
             <div id="page">
                 <h2>Manage Content</h2>
