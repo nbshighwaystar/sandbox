@@ -73,7 +73,27 @@
         }
     }
 
-    function navigation($subject_id, $page_id)
+    function find_selected_page()
+    {
+        global $current_subject;
+        global $current_page;
+        if (isset($_GET["subject"]))
+        {
+            $current_subject = find_subject_by_id($_GET["subject"]);
+            $current_page = null;
+        } elseif (isset($_GET["page"])) 
+        {
+            $current_page = find_page_by_id($_GET["page"]);
+            $current_subject = null;
+        }else 
+        {
+            $current_page = null;
+            $current_subject = null;
+        }
+    
+    }
+
+    function navigation($subject_array, $page_array)
     {   
        
         $output = "<ul class=\"subjects\">";
@@ -81,7 +101,7 @@
         while ($subject=mysqli_fetch_assoc($subject_set)) 
         {
             $output .= "<li ";
-                if ($subject_id == $subject['id']) 
+                if ($subject_array && $subject_array["id"] == $subject['id']) 
                 {
                     $output .=  "class=\"selected\"";
                 }
@@ -97,7 +117,7 @@
             while ($page = mysqli_fetch_assoc($page_set))
                     {
                         $output .= "<li ";
-                            if ($page['id'] == $page_id)
+                            if ($page_array && $page['id'] == $page_array["id"])
                             {
                                 $output .= "class =\"selected\"";
                             }
