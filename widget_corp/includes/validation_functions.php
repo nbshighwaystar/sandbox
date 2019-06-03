@@ -1,4 +1,4 @@
-    <?php
+<?php
     // * presence
 function has_presence($value)   
 {
@@ -10,11 +10,12 @@ function has_max_length($value, $max)
 {
     return strlen($value) <= $max;
 }
+
 function validate_max_lengths($fields_with_max_lengths)
 {
     global $errors;
-    // using an assoc. array
-    foreach ($fields_with_max_lengths as $field => $max) {
+    // Expect an assoc. array
+    foreach ($fields_with_max_lengths as $field => $$max) {
         $value = trim($_POST[$field]);
         if (!has_max_length($value, $max))
         {

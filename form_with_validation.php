@@ -10,10 +10,18 @@ if (isset($_POST['submit'])){
     $password = trim($_POST['password']);
 
     // Validation
-    if (!has_presence($username)){
-        $errors["username"] = "Username can't be blank";
+    $fields_requied = array("username", "password");
+    foreach ($fields_requied as $field) 
+    {
+        $value = trim($_POST[$field]);
+        if (!has_presence($value))
+        {
+            $errors[$field] = ucfirst($field) ." can't be blank";
+        }
     }
-
+    $fields_with_max_lengths = array("username" => 30, "password" => 8);
+    validate_max_lengths($fields_with_max_lengths);
+    
     if (empty($errors))
     {
         // try to login
