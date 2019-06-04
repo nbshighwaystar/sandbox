@@ -22,8 +22,9 @@
                 { ?>
                 <h2>Manage Subject</h2>
                      Menu name: <?php echo $current_subject["menu_name"]; ?> <br />
+                     <a href="edit_subject.php?subject=<?php echo $current_subject["id"]; ?>">Edit Subject</a>
                 <?php } elseif ($current_page)
-                { ?>
+                { ?><br />
                     <h2>Manage Page</h2>
                     Menu name: <?php echo $current_page{"menu_name"}; ?> <br />
                 <?php } else 
