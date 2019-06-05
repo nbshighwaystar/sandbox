@@ -22,7 +22,9 @@
                 <form action="create_subject.php" method="POST">
                     <p>
                         Subject name: 
+                        
                         <input type="text" name="menu_name" value="" />
+                     
                     </p>
                     <p>
                         Position:
