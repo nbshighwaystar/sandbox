@@ -42,15 +42,16 @@
                         while ($page = mysqli_fetch_assoc($page_set))
                         {?>
                             <li>
-                            <a href="manage_content.php?page=<?php echo $page["id"]?>">
-                                <?php echo $page['menu_name']; ?></a>
+                                <?php $safe_page_id = urldecode($page["id"])?>
+                            <a href="manage_content.php?page=<?php echo $safe_page_id?>">
+                                <?php echo htmlentities($page['menu_name']); ?></a>
                             </li>
                             
                         <?php } mysqli_free_result($page_set); ?>
                         </ul>
                         <br />
                         <br />
-                         + <a href="new_page.php?subject=<?php echo $current_subject["id"]; ?>">Add a new page in this subject </a>
+                         + <a href="new_page.php?subject=<?php echo urldecode($current_subject["id"]); ?>">Add a new page in this subject </a>
                     
                 <?php } elseif ($current_page)
                 { ?><br />
@@ -68,7 +69,7 @@
                      <br />
 
                      <a href="edit_page.php?page=<?php echo 
-                     $current_page["id"]; ?>">Edit Page</a><br />
+                     urldecode($current_page["id"]); ?>">Edit Page</a><br />
                      <br />
                      
                 <?php } else 

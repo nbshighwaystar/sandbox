@@ -20,10 +20,15 @@
     if (isset($_POST['submit'])) 
     {
         // Process the form
-
+        
+        $id = $current_page["id"];
+        $menu_name = mysql_prep($_POST["menu_name"]);
+        $position = (int) $_POST["position"];
+        $visible = (int) $_POST["visible"];
+        $content = mysql_prep($_POST["content"]);
         
         // validation
-        $required_fields = array("menu_name", "position", "visible");
+        $required_fields = array("menu_name", "position", "visible", "content");
         validate_presences($required_fields);
         
         $fields_with_max_lengths = array("menu_name" => 30);
@@ -32,19 +37,12 @@
         if (empty($errors))
         {
             // Perform Update
-            $id = $current_subject["id"];
-            $menu_name = $_POST['menu_name'];
-            $position = (int) $_POST['position'];
-            $visible = (int) $_POST['visible'];
-            $content =$_POST['content'];
-            $menu_name = mysql_prep($menu_name);
-            $content = mysql_prep($content);
         
             $query  = "UPDATE pages SET ";
             $query .= "menu_name = '{$menu_name}', ";
             $query .= "position = {$position}, ";
-            $query .= "visible = {$visible} ";
-            $query .= "content = {$content} ";
+            $query .= "visible = {$visible}, ";
+            $query .= "content = '{$content}' ";
             $query .= "WHERE id = {$id} ";
             $query .= "LIMIT 1"; 
            
@@ -53,7 +51,7 @@
             {
                 //success
                 $_SESSION["message"] = "Page updated.";
-                redirect_to("manage_content.php");
+                redirect_to("manage_content.php?page={$id}");
                 ob_flush();
             } else 
                 {
@@ -88,12 +86,12 @@
                      ?>
                 <?php echo form_errors($errors); ?>
 
-                <h2>Edit Page: <?php echo $current_page["menu_name"]; ?></h2>
+                <h2>Edit Page: <?php echo $current_page["subject_id"]; ?></h2>
 
                 <form action="edit_page.php?page=<?php echo $current_page["id"] ?>" method="POST">
                     <p>
-                        Page name: 
-                        <input type="text" name="menu_name" value="<?php echo $current_page["menu_name"] ?>" />
+                        Menu name: 
+                        <input type="text" name="menu_name" value="<?php echo urldecode($current_page["menu_name"]) ?>" />
                     </p>
                     <p>
                         Position: 
@@ -102,7 +100,11 @@
                             $page_set = find_pages_for_subject($current_page["subject_id"]);
                             $page_count = mysqli_num_rows($page_set);
                             for ($count=1; $count <= $page_count ; $count++) { 
-                                echo "<option value=\"{$count}\">{$count}</option>";
+                                echo "<option value=\"{$count}\"";
+                                if ($current_page["position"] == $count) {
+                                    echo " selected";
+                                }
+                                echo ">{$count}</option>";
                             }
                         ?>
                         </select>
@@ -115,9 +117,9 @@
                     </p>
                     <p>
                             Content: <br />
-                            <textarea name="content" placeholder="Enter contents here..." cols="30" rows="10"> 
+                            <textarea name="content"  cols="50" rows="10" > 
                                 <?php
-                                    echo $current_page["content"]; 
+                                    echo htmlentities($current_page["content"]); 
                                 ?>
                             </textarea>
                            

@@ -8,12 +8,20 @@
 <?php
     find_selected_page();
 ?>
-
+<?php 
+    // Cant add a new page unless we have a subject as a parent
+    if (!$current_subject)
+    {
+        // subject ID was missing or invalid or 
+        // subject couldn't be found in database
+        redirect_to("manage_content.php");
+    }
+?>
 <?php
     if (isset($_POST['submit'])) 
     {
         // validation
-        $required_fields = array("menu_name", "position");
+        $required_fields = array("menu_name", "position", "visible", "content");
         validate_presences($required_fields);
      
         $fields_with_max_lengths = array("menu_name" => 30);
@@ -76,7 +84,7 @@
 
                 <form action="new_page.php?subject=<?php echo $current_subject["id"]?>" method="POST">
                     <p>
-                        Page name: 
+                        Menu name: 
                         
                         <input type="text" name="menu_name" value=""  />
                      
@@ -109,7 +117,7 @@
                     <input type="submit" name="submit" value="Create Page" />
                 </form>
                 <br />
-                <a href="manage_content.php">Cancel</a>
+                <a href="manage_content.php?subject=<?php echo urldecode($current_subject["id"]); ?>">Cancel</a>
             </div>
     </div>
 
