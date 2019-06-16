@@ -27,10 +27,31 @@
                      Position: <?php echo $current_subject["position"]?> <br />
                      Visible: <?php echo $current_subject["visible"] == 1 ? 'Yes' : 'no'; ?> 
                      <br />
+                     <br />
 
                      <a href="edit_subject.php?subject=<?php echo 
-                     $current_subject["id"]; ?>">Edit Subject</a>
-                
+                     $current_subject["id"]; ?>">Edit Subject</a><br />
+                     <br />
+
+                     <hr>
+                     <h3>Pages in this subject: <?php echo $current_subject["menu_name"]?> </h3>
+
+                     <?php 
+                        $page_set = find_pages_for_subject($current_subject["id"]);
+                        echo "<ul class=\"pages\">";
+                        while ($page = mysqli_fetch_assoc($page_set))
+                        {?>
+                            <li>
+                            <a href="manage_content.php?page=<?php echo $page["id"]?>">
+                                <?php echo $page['menu_name']; ?></a>
+                            </li>
+                            
+                        <?php } mysqli_free_result($page_set); ?>
+                        </ul>
+                        <br />
+                        <br />
+                         + <a href="new_page.php?subject=<?php echo $current_subject["id"]; ?>">Add a new page in this subject </a>
+                    
                 <?php } elseif ($current_page)
                 { ?><br />
                     <h2>Manage Page</h2>
@@ -43,7 +64,13 @@
                      <div class="view-content">
                         <?php echo htmlentities($current_page["content"]); ?>
                      </div>
+                     <br />
+                     <br />
 
+                     <a href="edit_page.php?page=<?php echo 
+                     $current_page["id"]; ?>">Edit Page</a><br />
+                     <br />
+                     
                 <?php } else 
                 { ?>
                     <h2>Please select a subject or a page.</h2>

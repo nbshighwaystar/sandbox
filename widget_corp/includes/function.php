@@ -44,8 +44,8 @@
         global $connection;
         $query  = "SELECT * ";
         $query .= "FROM subjects ";
-     //   $query .= "WHERE visible = 1 ";
-        $query .= "ORDER BY id ASC";
+        $query .= "WHERE visible = 1 ";
+        $query .= "ORDER BY position ASC";
         $subject_set = mysqli_query($connection, $query);
         confirm_query($subject_set);
         return $subject_set; 
