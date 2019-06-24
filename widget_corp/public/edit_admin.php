@@ -12,10 +12,10 @@
        
         $id = $current_admin["id"];
         $username = $_POST['username'];
-        $password = $_POST['hashed_password'];
+        $password = $_POST['password'];
 
         // validation
-        $required_fields = array("username", "hashed_password");
+        $required_fields = array("username", "password");
         validate_presences($required_fields);
 
         $fields_with_max_lengths = array("username" => 30);
@@ -65,16 +65,16 @@
                      ?>
                 <?php echo form_errors($errors); ?>
 
-                <h2>Edit admin: <?php echo $current_admin["username"]; ?></h2>
+                <h2>Edit admin: <?php echo htmlentities($current_admin["username"]); ?></h2>
 
-                <form action="edit_admin.php?admin=<?php echo $current_admin["id"];?>" method="POST">
+                <form action="edit_admin.php?admin=<?php echo urlencode($current_admin["id"]);?>" method="POST">
                     <p>
                         Username: 
-                        <input type="text" name="username" value="<?php echo $current_admin["username"]; ?>" />
+                        <input type="text" name="username" value="<?php echo htmlentities($current_admin["username"]); ?>" />
                     </p>
                     <p>
                         Password:
-                        <input type="password" name="hashed_password" id="" value="<?php echo $current_admin["hashed_password"] ?>">
+                        <input type="password" name="password" id="" value="<?php echo $current_admin["hashed_password"] ?>">
                     </p>
                     <input type="submit" name="submit" value="Edit admin" />
                 </form>

@@ -45,9 +45,10 @@ tr:nth-child(even) {
                         while ($admin = mysqli_fetch_assoc($admin_set)) { ?>
                     <tr>
                             <td>
-                                <?php echo $admin["username"] ;?>
+                                <?php echo htmlentities($admin["username"]) ;?>
                             </td>
-                            <td><a href="edit_admin.php?admin=<?php echo $admin["id"];?>">Edit</a> <a href="delete_admin.php?admin=<?php echo $admin["id"];?>">Delete</a></td>
+                            <td><a href="edit_admin.php?admin=<?php echo urlencode($admin["id"]);?>">Edit</a> 
+                            <a href="delete_admin.php?admin=<?php echo $admin["id"];?>" onclick="return confirm('Are you sure?');">Delete</a></td>
                     </tr>
                         
                         <?php } // while

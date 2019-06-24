@@ -11,9 +11,9 @@
     if (isset($_POST['submit']))
     {
         $username = trim($_POST['username']);
-        $hashed_password = trim($_POST['hashed_password']);
+        $hashed_password = trim($_POST['password']);
         // validation
-        $required_fields = array("username", "hashed_password");
+        $required_fields = array("username", "password");
         validate_presences($required_fields);
 
         $fields_with_max_lengths = array("username" => 30);
@@ -69,7 +69,7 @@
                 </p>
                 <p>
                     Password : 
-                    <input type="password" name="hashed_password" value=""   />
+                    <input type="password" name="password" value=""   />
                 </p>
                 <input type="submit" name="submit" value="Create Admin" />
             </form>
