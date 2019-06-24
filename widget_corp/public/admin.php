@@ -14,7 +14,7 @@
                     <a href="manage_content.php">Manage Website Content</a>
                 </li>
                 <li>
-                    <a href="manage+_admins.php">Manage Admin Users</a>
+                    <a href="manage_admins.php">Manage Admin Users</a>
                 </li>
                 <li>
                     <a href="logout.php">Logout</a>

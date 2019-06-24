@@ -35,6 +35,23 @@ a:hover { color: #1A446C;}
     background: #EEE4B9;
 }
 
+/* table */
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #999;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: burlywood;
+}
+
 #footer {
     clear: both;
     height: 2em; margin: 0; padding: 1em;
@@ -88,3 +105,4 @@ margin: 1em; padding: 1em; border: 1px solid #999;
 .error ul {
     padding-left: 2em;
 }
+

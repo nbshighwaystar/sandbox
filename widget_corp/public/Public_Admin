@@ -1,0 +1,7 @@
+Public vs. Admin
+ * Read only; no Create, Update, Delete
+ * Different appearance, different user interface
+    - should be easy to see the difference
+    - admin navigation shows pages for selected subject
+* Subject and page visibility
+* Default page content for subjects

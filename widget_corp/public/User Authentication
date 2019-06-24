@@ -1,0 +1,21 @@
+* Admin creates a user database
+    - Password is encrypted before user is stored
+* User logs in via a login form
+
+* Application authenticates user
+    - Searches for username in database
+    - If username found: encrypts from password and compares with
+        encrypted stored password
+    - If password matches: sets a variable in the session to the user ID, 
+        and redirects to a post-login page
+    
+* User requests additional password-protected pages
+    - Cookies and session data are available with each request
+
+* Application checks the session data for  the user ID
+    - If preset: returns the requested page
+    - If absent: redirects to the login form
+
+* User logs out
+    - Set user ID stored in session variable to NULL
+    

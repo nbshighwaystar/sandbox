@@ -1,0 +1,25 @@
+$context = 'day';
+
+if ($context == "night") {
+    echo "Talk quietly.";
+} else {
+    echo "Talk normally.";
+}
+
+if ($context == 'header') {
+    // add margin on botton
+} elseif ($ontext == 'footer') {
+    // add margin on top
+} else {
+    // add no margin
+}
+
+function find_it($options=array()) {
+    if ($options['visible']) {
+        ...
+    }
+}
+
+$opts = array('visible'  =>  false,
+                'order' => 'ascending');
+find_it ($opts);

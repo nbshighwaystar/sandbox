@@ -1,0 +1,7 @@
+* manage_admins.php ok
+* new_admin.php ok
+* edit_admin.php
+* delete_admin.php
+*includes/functions.php
+    - find_all_admins()
+    - find_admin_by_id().0`
