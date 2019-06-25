@@ -46,6 +46,8 @@ tr:nth-child(even) {
                     <tr>
                             <td>
                                 <?php echo htmlentities($admin["username"]) ;?>
+                                <br />
+                                <?php echo htmlentities($admin["hashed_password"]) ;?>
                             </td>
                             <td><a href="edit_admin.php?admin=<?php echo urlencode($admin["id"]);?>">Edit</a> 
                             <a href="delete_admin.php?admin=<?php echo $admin["id"];?>" onclick="return confirm('Are you sure?');">Delete</a></td>

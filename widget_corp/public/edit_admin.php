@@ -11,8 +11,8 @@
     {
        
         $id = $current_admin["id"];
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username = trim($_POST['username']);
+        $password = password_encrypt($_POST['password']);
 
         // validation
         $required_fields = array("username", "password");
@@ -74,7 +74,7 @@
                     </p>
                     <p>
                         Password:
-                        <input type="password" name="password" id="" value="<?php echo $current_admin["hashed_password"] ?>">
+                        <input type="password" name="password" id="" value="">
                     </p>
                     <input type="submit" name="submit" value="Edit admin" />
                 </form>

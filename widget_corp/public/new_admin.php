@@ -11,7 +11,7 @@
     if (isset($_POST['submit']))
     {
         $username = trim($_POST['username']);
-        $hashed_password = trim($_POST['password']);
+        $hashed_password = password_encrypt($_POST['password']);
         // validation
         $required_fields = array("username", "password");
         validate_presences($required_fields);
