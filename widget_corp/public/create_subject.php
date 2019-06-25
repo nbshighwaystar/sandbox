@@ -3,6 +3,7 @@
 <?php require_once("../includes/db_connection.php");?>
 <?php require_once("../includes/function.php"); ?>
 <?php require_once("../includes/validation_functions.php"); ?>
+<?php confirm_logged_in(); ?>
 
 <?php
     if (isset($_POST['submit'])) {

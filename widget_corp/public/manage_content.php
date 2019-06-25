@@ -1,6 +1,7 @@
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/function.php"); ?>
+<?php confirm_logged_in(); ?>
 
 <?php $layout_context = "admin"; ?>
 <?php include("../includes/layouts/header.php"); ?>

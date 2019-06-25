@@ -1,6 +1,7 @@
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/function.php"); ?>
+<?php confirm_logged_in(); ?>
 
 <?php $layout_context = "admin"; ?>
 <?php include("../includes/layouts/header.php"); ?>
@@ -9,6 +10,7 @@ table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    table-layout: auto;
 }
 
 td, th {
@@ -46,8 +48,6 @@ tr:nth-child(even) {
                     <tr>
                             <td>
                                 <?php echo htmlentities($admin["username"]) ;?>
-                                <br />
-                                <?php echo htmlentities($admin["hashed_password"]) ;?>
                             </td>
                             <td><a href="edit_admin.php?admin=<?php echo urlencode($admin["id"]);?>">Edit</a> 
                             <a href="delete_admin.php?admin=<?php echo $admin["id"];?>" onclick="return confirm('Are you sure?');">Delete</a></td>
