@@ -55,6 +55,9 @@
     </body>
 <?php
     //5. Close database connection
-    mysqli_close($connection);
+    if(isset($connection)){
+        mysqli_close($connection);
+        unset($connection);
+    }
 ?>
 </html>
